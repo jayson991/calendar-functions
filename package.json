@@ -1,0 +1,56 @@
+{
+  "name": "calendar-functions",
+  "version": "1.0.5",
+  "description": "A Project To Create Javascript Utils For Calendar Operations",
+  "author": "jayson991 <wulingjie991@outlook.com>",
+  "main": "lib/index.js",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest test --watch",
+    "lint": "eslint src --ext .js",
+    "prettier": "prettier --write src/**/*.js"
+  },
+  "keywords": [
+    "year",
+    "month",
+    "day",
+    "week",
+    "node",
+    "babel",
+    "utils",
+    "eslint",
+    "webpack",
+    "prettier",
+    "calendar",
+    "functions"
+  ],
+  "files": [
+    "lib",
+    "README.md",
+    "package.json"
+  ],
+  "bugs": {
+    "url": "https://github.com/jayson991/calendar-functions/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayson991/calendar-functions.git"
+  },
+  "homepage": "https://github.com/jayson991/calendar-functions",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.2.7",
+    "prettier": "^2.0.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
