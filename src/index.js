@@ -1,5 +1,3 @@
-import getWeek from './getWeek'
-
 const addPrefix = data => {
   return data < 10 ? `0${data}` : `${data}`
 }
@@ -47,6 +45,27 @@ const getCalendar = (start, end) => {
   return period
 }
 
+const getWeek = (date) => {
+  const DECIMAL = 10
+  let year, month, day
+
+  if (/[-/]/g.test(date) && Object.prototype.toString.call(date) === '[object String]') {
+    const dateArr = date.split(/[-/]/)
+    year = parseInt(dateArr[0], DECIMAL)
+    month = parseInt(dateArr[1], DECIMAL) - 1
+    day = parseInt(dateArr[2], DECIMAL)
+  }
+
+  if (!/[-/]/g.test(date) && Object.prototype.toString.call(date) === '[object Number]') {
+    const dateFormat = new Date(date)
+    year = dateFormat.getFullYear()
+    month = dateFormat.getMonth()
+    day = dateFormat.getDate()
+  }
+
+  return (year && month && day && new Date(year, month, day).getDay()) || 'Invalid Date Object!'
+}
+
 const getMonthWeek = (year, month, date) => {
   const DECIMAL = 10
   const dateNow = new Date(parseInt(year, DECIMAL), parseInt(month, DECIMAL) - 1, parseInt(date, DECIMAL))
@@ -62,7 +81,7 @@ const getYearWeek = (year, month, date) => {
   const oneDayTime = 24 * 60 * 60 * 1000
   const dateNow = new Date(parseInt(year, DECIMAL), parseInt(month, DECIMAL) - 1, parseInt(date, DECIMAL))
   const dayDifference = Math.round((dateNow.valueOf() - dateFirst.valueOf()) / oneDayTime)
-  
+
   return Math.ceil((dayDifference + dateFirst.getDay()) / 7)
 }
 

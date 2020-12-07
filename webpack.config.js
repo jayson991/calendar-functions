@@ -3,10 +3,11 @@ const path = require('path')
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
+  target: [ 'web', 'es5' ],
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, './lib'),
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    path: path.resolve(__dirname, './lib')
   },
   resolve: {
     extensions: [ '.js' ]
@@ -16,11 +17,21 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    node: 'current'
+                  }
+                }
+              ]
+            ]
           }
-        ]
+        }
       }
     ]
   }
